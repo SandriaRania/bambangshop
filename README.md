@@ -56,7 +56,7 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [✓] Commit: `Implement add function in Subscriber repository.`
     -   [✓] Commit: `Implement list_all function in Subscriber repository.`
     -   [✓] Commit: `Implement delete function in Subscriber repository.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
+    -   [✓] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
     -   [ ] Commit: `Create Notification service struct skeleton.`
     -   [ ] Commit: `Implement subscribe function in Notification service.`
@@ -77,6 +77,39 @@ This is the place for you to write reflections:
 ### Mandatory (Publisher) Reflections
 
 #### Reflection Publisher-1
+1. In the Observer pattern diagram explained by the Head First Design Pattern book, Subscriber
+   is defined as an interface. Explain based on your understanding of Observer design patterns,
+   do we still need an interface (or trait in Rust) in this BambangShop case, or a single Model
+   struct is enough?
+
+Walaupun satu model struct saja memungkinkan, program akan jauh lebih baik jika Subscriber 
+dibuat sebagai interfacenya sendiri. Hal ini menghindari terjadinya ketergantungan dari sisi 
+Publisher dan juga mengabstraksikan isi dari Subscriber. Walaupun mungkin design pattern seperti ini
+mungkin mengekspos Publisher ke Subscriber atau sebaliknya, tidak bisa dipungkiri bahwa design pattern
+ini akan sangat membantu dari sisi reusability, efficiency, dan menerapkan konsep clean code.
+
+2. id in Program and url in Subscriber is intended to be unique. Explain based on your
+   understanding, is using Vec (list) sufficient or using DashMap (map/dictionary) like we currently
+   use is necessary for this case?
+
+Penggunaan Vec dan DashMap memiliki kelebihannya masing-masing, jadi hal ini tidak bisa langsung dibandingkan.
+Dalam konteks ini, jika kita mengetahui id dan url yang diinginkan dan kita ingin merujuk terhadap
+objek tersebut, maka tentunya DashMap akan lebih efisien dan hemat dibandingkan Vec. Tapi jika kita tidak tahu 
+id dan url yang kita inginkan, namun kita dapat mengiterasi list id dan url untuk mencari kedua hal tersebut, 
+maka Vec adalah tipe yang lebih sesuai digunakan. Sebagai kesimpulan, penggunaan Vec dan DashMap lebih bergantung
+pada metode penggunaannya dibandingkan objek yang ingin disimpan di dalamnya, baik url, id, atau lainnya.
+
+3. When programming using Rust, we are enforced by rigorous compiler constraints to make a
+   thread-safe program. In the case of the List of Subscribers (SUBSCRIBERS) static variable, we
+   used the DashMap external library for thread safe HashMap. Explain based on your
+   understanding of design patterns, do we still need DashMap or we can implement Singleton
+   pattern instead?
+
+Singleton adalah pattern yang digunakan di mana satu class dengan static variable digunakan dan direferensikan
+secara global. Kelebihan singleton pattern adalah penggunaannya akan sangat menghemat memori, namun ia tidak terlalu
+thread-safe. Sebagai contoh, jika dua thread merefer terhadap satu instance yang sama, maka mungkin saja bisa terjadi
+race condition. Maka, jika program menggunakan beberapa thread, akan lebih aman untuk menggunakan DashMap dibandingkan
+Singleton yang lebih rawan.
 
 #### Reflection Publisher-2
 
