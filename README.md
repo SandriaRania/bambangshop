@@ -63,7 +63,7 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [✓] Commit: `Implement subscribe function in Notification controller.`
     -   [✓] Commit: `Implement unsubscribe function in Notification service.`
     -   [✓] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
+    -   [✓] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
     -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
     -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
@@ -112,5 +112,35 @@ race condition. Maka, jika program menggunakan beberapa thread, akan lebih aman 
 Singleton yang lebih rawan.
 
 #### Reflection Publisher-2
+1. In the Model-View Controller (MVC) compound pattern, there is no “Service” and “Repository”.
+   Model in MVC covers both data storage and business logic. Explain based on your
+   understanding of design principles, why we need to separate “Service” and “Repository” from
+   a Model?
+
+Walaupun compound MVC pada umumnya tidak memiliki Service dan Repository, MVC di Springboot memiliki
+kedua hal tersebut, sehingga terdapat lima role dalam MVC Springboot. Hal ini dikarenakan, walaupun Model
+bisa saja mengurus data dan business logic dengan sendirinya, hal ini akan membuat Model menghandle terlalu banyak hal.
+Jika kita membagi tugas ini kepada Service dan Repository, maka tidak hanya memenuhi Single Responsibility Principle,
+hal ini juga akan memudahkan pengelolaan ke depannya.
+
+2. What happens if we only use the Model? Explain your imagination on how the interactions
+   between each model (Program, Subscriber, Notification) affect the code complexity for
+   each model?
+
+Jika kita tidak mengimplementasikan service dan repository dan hanya mengandalkan model, maka tentunya model-model itu
+akan menjadi sangat panjang, kompleks, dan sulit dibaca. Andaikan jika ada suatu error dalam testing, kita akan kesulitan
+memperbaikinya tanpa mempengaruhi fungsi lainnya di model-model tersebut. Hanya menggunakan model saja tentu bisa dilakukan,
+namun hal ini hanya akan menyulitkan diri kita sendiri. Maka, akan jauh lebih baik jika kita dapat mengimplementasikan service
+dan repository untuk membagi-bagi fungsi sesuai tugasnya masing-masing sehingga jauh lebih baik dari konteks keterbacaan, 
+pengelolaan, dan efisiensi.
+
+3. Have you explored more about Postman? Tell us how this tool helps you to test your current
+   work. You might want to also list which features in Postman you are interested in or feel like it
+   is helpful to help your Group Project or any of your future software engineering projects.
+
+Saya sudah sedikit-dikit mempelajari Postman. Menurut saya, fungsi Postman sebagai untuk mengetes HTTP
+request secara local sangat menarik dan membantu saya untuk memperbaiki program saya sebelum dipush ke proyek akhir.
+Saya rasa saya akan sering menggunakan Postman dalam projek saya ke depannya, tidak hanya untuk mengetes HTTP request,
+namun mungkin untuk fungsi lain yang saya akan pelajari selama saya juga mengeksplorasi cara menggunakan Postman lebih lanjut.
 
 #### Reflection Publisher-3
