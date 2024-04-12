@@ -69,7 +69,7 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [✓] Commit: `Implement notify function in Notification service to notify each Subscriber.`
     -   [✓] Commit: `Implement publish function in Program service and Program controller.`
     -   [✓] Commit: `Edit Product service methods to call notify after create/delete.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
+    -   [✓] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -144,3 +144,26 @@ Saya rasa saya akan sering menggunakan Postman dalam projek saya ke depannya, ti
 namun mungkin untuk fungsi lain yang saya akan pelajari selama saya juga mengeksplorasi cara menggunakan Postman lebih lanjut.
 
 #### Reflection Publisher-3
+1. Observer Pattern has two variations: Push model (publisher pushes data to subscribers) and
+   Pull model (subscribers pull data from publisher). In this tutorial case, which variation of
+   Observer Pattern that we use?
+
+Tutorial ini menggunakan push model, yaitu variasi observer pattern di mana publisher menge-push data ke subscriber. Hal ini
+bisa dilihat di model Subscriber yang memiliki fungsi update dan Service Notification yang memiliki fungsi untuk memanggil update
+dari setiap subscriber tersebut. Sehingga Subscriber bersifat pasif dan hanya perlu mengupdate data ketika diminta, sedangkan 
+Notification yang bertugas memanggil dan meminta update setiap Subscriber yang ada.
+
+2. What are the advantages and disadvantages of using the other variation of Observer Pattern
+   for this tutorial case? (example: if you answer Q1 with Push, then imagine if we used Pull)
+
+Jika kita menggunakan variasi Pull pattern, maka keuntungannya adalah setiap Subscriber memiliki kebebasan untuk memilih apa 
+dan kapan data ingin ditarik. Kekurangannya adalah publisher mungkin harus dibuat lebih kompleks untuk mengakomodasi request 
+dari Subscriber yang mungkin meminta informasi dengan kriteria berbeda-beda. Sebagai kesimpulan, sebenarnya kedua tipe observer
+pattern bisa digunakan, namun dalam konteks banyak subscriber, mungkin push method akan lebih tepat digunakan.
+
+3. Explain what will happen to the program if we decide to not use multi-threading in the
+   notification process.
+Jika kita tidak menggunakan multi-threading, maka kita harus memanggil update tiap Subscriber satu-satu. Tentunya hal ini
+tidak efisien dan akan memakan waktu lama. Jika ada 100,000 subscriber, maka berapa lama waktu yang dibutuhkan untuk
+mengirimkan notifikasi ke semuanya satu-satu? Maka, multi-threading sangat membantu dalam mempersingkat waktu dan meminimalisir
+usaha yang perlu dilakukan.
